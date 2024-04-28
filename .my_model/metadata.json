@@ -1,0 +1,23 @@
+{
+    "tfjsVersion": "1.3.1",
+    "tmVersion": "0.8.6",
+    "packageVersion": "0.8.6",
+    "packageName": "@teachablemachine/pose",
+    "timeStamp": "2024-04-28T13:44:22.706Z",
+    "userMetadata": {},
+    "modelName": "my-pose-model",
+    "labels": [
+        "Farbe 1",
+        "Farbe 2",
+        "Farbe 3",
+        "Farbe 4"
+    ],
+    "modelSettings": {
+        "posenet": {
+            "architecture": "MobileNetV1",
+            "outputStride": 16,
+            "inputResolution": 257,
+            "multiplier": 0.75
+        }
+    }
+}
