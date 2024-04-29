@@ -1,65 +1,59 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Color Posing Game</title>
-    <meta name="description" content="Just a pure semantic HTML markup, without .classes. Built with Pico CSS."/>
-    <link rel="shortcut icon" href="https://picocss.com/favicon.ico" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.classless.min.css"/>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js" defer></script>
-    <script src="second.page.js" defer></script>
+    <meta charset="UTF-8">
+    <title>Teachable Machine mit Pose Detection</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose"></script>
+    <script defer src="app.js"></script>
+    <script src="TensorFlow.js" defer></script> 
     
-
-    <style>
-           body, html {
-    height: 100vh; /* Ändere von 100% zu 100vh um sicherzustellen, dass der Body den gesamten Viewport einnimmt */
-    margin: 0;
-    display: flex;
-    flex-direction: column; /* Dies richtet alle Kinder (header, button-container, video) vertikal aus */
-    justify-content: center; /* Zentriert die Inhalte vertikal */
-    align-items: center; /* Zentriert die Inhalte horizontal */
-    background-color: #d9f1da;
-}
-
-video {
-    height: auto; /* Behält das Seitenverhältnis bei */
-    max-width: 90%; /* Passt die Breite an, basierend auf dem verfügbaren Platz */
-    border: 3px solid #333; /* Optional, fügt einen Rahmen hinzu */
-   
-}
-
-.button-container {
-    margin-top: 20px; /* Fügt etwas Abstand nach dem Video hinzu */
-}
-
-.button-container button {
-    padding: 10px 20px; /* Anpassung für besser sichtbare Größe */
-    background-color: #0b5c17;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-    </style>
+    <title>30 Sekunden Timer</title>
+  
+     
 </head>
 <body>
- <header>
-    <h1>los gehts</h1>
-</header>
-    <div class="button-container">
-        <button type="button" onclick="init()">Start</button>
-    </div>
+    <canvas id="canvas"></canvas>
+
+    <div id="timer">00:30</div>
+    <button onclick="startTimer()">Start</button>
+
+    <script src="timer.js"></script>
+ 
+   <style> body, html {
+        height: 100vh; /* Ändere von 100% zu 100vh um sicherzustellen, dass der Body den gesamten Viewport einnimmt */
+        margin: 0;
+        display: flex;
+        flex-direction: column; /* Dies richtet alle Kinder (header, button-container, video) vertikal aus */
+        justify-content: center; /* Zentriert die Inhalte vertikal */
+        align-items: center; /* Zentriert die Inhalte horizontal */
+        background-color: #d9f1da;
+    }
+     timer {
+            font-size: 2rem;
+            font-family: Arial, sans-serif; }
+    video {
+        height: auto; /* Behält das Seitenverhältnis bei */
+        max-width: 90%; /* Passt die Breite an, basierend auf dem verfügbaren Platz */
+        border: 3px solid #333; /* Optional, fügt einen Rahmen hinzu */
+       
+    }
     
-        <video id="videoElement" autoplay></video>
-        <canvas id="canvas"></canvas>
-        <div id="label-container"></div>
-        <!-- Stelle sicher, dass alle Skripte korrekt geladen werden und keine Fehler in der Konsole angezeigt werden -->
-        <script type="text/javascript">
-            // Hier würde der JavaScript-Code eingefügt, den du bereits hast
-        </script>
+    .button-container {
+        margin-top: 20px; /* Fügt etwas Abstand nach dem Video hinzu */
+    }
+    
+    .button-container button {
+        padding: 10px 20px; /* Anpassung für besser sichtbare Größe */
+        background-color: #0b5c17;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+        </style>
+  
+
 </body>
 </html>
