@@ -1,26 +1,26 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Teachable Machine mit Pose Detection</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
     <script defer src="app.js"></script>
-    <script src="TensorFlow.js" defer></script> 
-    
+    <script src="TensorFlow.js" defer></script>
+
     <title>30 Sekunden Timer</title>
-  
-     
-</head>
-<body>
+  </head>
+  <body>
     <canvas id="canvas"></canvas>
 
     <div id="timer">00:30</div>
     <button onclick="startTimer()">Start</button>
 
     <script src="timer.js"></script>
- 
-   <style> body, html {
+
+    <style>
+      body,
+      html {
         height: 100vh; /* Ändere von 100% zu 100vh um sicherzustellen, dass der Body den gesamten Viewport einnimmt */
         margin: 0;
         display: flex;
@@ -28,34 +28,29 @@
         justify-content: center; /* Zentriert die Inhalte vertikal */
         align-items: center; /* Zentriert die Inhalte horizontal */
         background-color: #d9f1da;
-    }
-     timer {
-    
-            font-size: 20%;
-            font-family: Arial, sans-serif; }
-    video {
+      }
+      timer {
+        font-size: 20%;
+        font-family: Arial, sans-serif;
+      }
+      video {
         height: auto; /* Behält das Seitenverhältnis bei */
         max-width: 90%; /* Passt die Breite an, basierend auf dem verfügbaren Platz */
         border: 3px solid #333; /* Optional, fügt einen Rahmen hinzu */
-       
-    }
-    
-    .button-container {
+      }
+
+      .button-container {
         margin-top: 20px; /* Fügt etwas Abstand nach dem Video hinzu */
-    }
-    
-    .button-container button {
+      }
+
+      .button-container button {
         padding: 10px 20px; /* Anpassung für besser sichtbare Größe */
         background-color: #0b5c17;
         color: white;
         border: none;
         border-radius: 5px;
         cursor: pointer;
-    }
-    
-        </style>
-  
- 
-
-</body>
+      }
+    </style>
+  </body>
 </html>
