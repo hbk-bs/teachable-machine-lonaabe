@@ -6,13 +6,13 @@
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose"></script>
     <script defer src="app.js"></script>
-    <script src="TensorFlow.js" defer></script> 
+    
     
     <title>30 Sekunden Timer</title>
   
      
-</head>
-<body>
+
+
     <canvas id="canvas"></canvas>
 
     <div id="timer">00:30</div>
@@ -52,10 +52,77 @@
         border-radius: 5px;
         cursor: pointer;
     }
-    
-        </style>
-  
- 
+    </style>
+   </head>
+   <body>    
 
+
+   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose"></script>
+   <script>
+ const URL = "https://teachablemachine.withgoogle.com/models/CpVHOQCyu/";
+let model, webcam, ctx, maxPredictions;
+function startTimer() {
+    var remainingTime = 30; // Timer von 30 Sekunden
+    var timerElement = document.getElementById('timer');
+    var interval = setInterval(function() {
+        remainingTime--;
+        var seconds = remainingTime % 60;
+        timerElement.textContent = "00:" + (seconds < 10 ? "0" + seconds : seconds);
+
+        if (remainingTime <= 0) {
+            clearInterval(interval);
+            timerElement.textContent = "Zeit abgelaufen!";
+        }
+    }, 1000);
+}
+
+async function init() {
+    const modelURL = URL + "model.json";
+    const metadataURL = URL + "metadata.json";
+    model = await tmPose.load(modelURL, metadataURL);
+    maxPredictions = model.getTotalClasses();
+
+    const size = 500;  // Größe der Kameraansicht anpassen
+    const flip = true; // Webcam spiegeln
+    webcam = new tmPose.Webcam(size, size, flip);
+    await webcam.setup(); // request access to the webcam
+    await webcam.play();
+    window.requestAnimationFrame(loop);
+
+    const canvas = document.getElementById("canvas");
+    canvas.width = size;
+    canvas.height = size;
+    ctx = canvas.getContext('2d');
+}
+
+async function loop() {
+    webcam.update(); // update the webcam frame
+    await predict();
+    window.requestAnimationFrame(loop);
+}
+
+async function predict() {
+    const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
+    const prediction = await model.predict(posenetOutput);
+    drawPose(pose);
+}
+
+function drawPose(pose) {
+    if (webcam.canvas) {
+        ctx.drawImage(webcam.canvas, 0, 0);
+        if (pose) {
+            const minPartConfidence = 0.5;
+            tmPose.drawKeypoints(pose.keypoints, minPartConfidence, ctx);
+            tmPose.drawSkeleton(pose.keypoints, minPartConfidence, ctx);
+        }
+    }
+}
+
+window.onload = init;
+
+
+</script>
 </body>
 </html>

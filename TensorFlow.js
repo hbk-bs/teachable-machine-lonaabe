@@ -58,4 +58,8 @@ function drawPose(pose) {
 }
 
 window.onload = init;
-
+notizen
+<script src="TensorFlow.js" defer></script>
+ <div id="timer">00:30</div>
+ <button onclick="startTimer()">Timer starten</button>
+ <canvas id="canvas"></canvas>
