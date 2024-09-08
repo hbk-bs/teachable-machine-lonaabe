@@ -1,67 +1,76 @@
 <!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <meta charset="UTF-8" />
     <title>Teachable Machine mit Pose Detection</title>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose"></script>
-    <script defer src="app.js"></script>
-    
-    
-    <title>30 Sekunden Timer</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+   
   
-     
 
+    <title>30 Sekunden Timer</title>
+
+
+</head>
+<body>
 
     <canvas id="canvas"></canvas>
 
     <div id="timer">00:30</div>
     <button onclick="startTimer()">Start</button>
+    <style> body, html {
+
+      height: 100vh; /* Ändere von 100% zu 100vh um sicherzustellen, dass der Body den gesamten Viewport einnimmt */
+      margin: 0;
+      display: flex;
+      flex-direction: column; /* Dies richtet alle Kinder (header, button-container, video) vertikal aus */
+      justify-content: center; /* Zentriert die Inhalte vertikal */
+      align-items: center; /* Zentriert die Inhalte horizontal */
+      background-color: #d9f1da;
+  }
+   timer {
+
+          font-size: 20%;
+          font-family: Arial, sans-serif; }
+ 
+    timer {
+      font-size: 20%;
+      font-family: Arial, sans-serif;
+    }
+    video {
+      height: auto; /* Behält das Seitenverhältnis bei */
+      max-width: 90%; /* Passt die Breite an, basierend auf dem verfügbaren Platz */
+      border: 3px solid #333; /* Optional, fügt einen Rahmen hinzu */
+
+  }
+
+ 
+    .button-container {
+      margin-top: 20px; /* Fügt etwas Abstand nach dem Video hinzu */
+  }
+  
+  
+    .button-container button {
+      padding: 10px 20px; /* Anpassung für besser sichtbare Größe */
+      background-color: #0b5c17;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+
+      </style>
 
     <script src="timer.js"></script>
- 
-   <style> body, html {
-        height: 100vh; /* Ändere von 100% zu 100vh um sicherzustellen, dass der Body den gesamten Viewport einnimmt */
-        margin: 0;
-        display: flex;
-        flex-direction: column; /* Dies richtet alle Kinder (header, button-container, video) vertikal aus */
-        justify-content: center; /* Zentriert die Inhalte vertikal */
-        align-items: center; /* Zentriert die Inhalte horizontal */
-        background-color: #d9f1da;
-    }
-     timer {
-    
-            font-size: 20%;
-            font-family: Arial, sans-serif; }
-    video {
-        height: auto; /* Behält das Seitenverhältnis bei */
-        max-width: 90%; /* Passt die Breite an, basierend auf dem verfügbaren Platz */
-        border: 3px solid #333; /* Optional, fügt einen Rahmen hinzu */
-       
-    }
-    
-    .button-container {
-        margin-top: 20px; /* Fügt etwas Abstand nach dem Video hinzu */
-    }
-    
-    .button-container button {
-        padding: 10px 20px; /* Anpassung für besser sichtbare Größe */
-        background-color: #0b5c17;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    </style>
-   </head>
-   <body>    
 
-
-   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-   <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet"></script>
-   <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose"></script>
-   <script>
- const URL = "https://teachablemachine.withgoogle.com/models/CpVHOQCyu/";
+   
+<script>
+const URL = "https://teachablemachine.withgoogle.com/models/CpVHOQCyu/";
 let model, webcam, ctx, maxPredictions;
 function startTimer() {
     var remainingTime = 30; // Timer von 30 Sekunden
@@ -124,5 +133,7 @@ window.onload = init;
 
 
 </script>
+
+  <!-- ./ Footer -->
 </body>
 </html>
